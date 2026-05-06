@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Kantin Zulfian</title></head>
+<body>
+    <h1>Menu Kantin</h1>
+    <ul id="menu"></ul>
+    <script>
+        const API_URL = '/api'; 
+        fetch(`${API_URL}/menu`)
+            .then(res => res.json())
+            .then(data => {
+                const list = document.getElementById('menu');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.nama} - Rp${item.harga}`;
+                    list.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>
