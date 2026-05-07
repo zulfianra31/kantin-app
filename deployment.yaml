@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kantin-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kantin
+  template:
+    metadata:
+      labels:
+        app: kantin
+    spec:
+      containers:
+      - name: kantin-container
+        image: USERNAME_DOCKER_KAMU/NAMA_IMAGE_KAMU:latest # GANTI INI
+        ports:
+        - containerPort: 80 # Sesuaikan dengan port aplikasi kamu
