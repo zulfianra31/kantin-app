@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_USER = "zulfianra" 
+        DOCKER_USER = "zulfian" 
         GIT_REPO_URL = "https://github.com/zulfianra31/kantin-app.git"
     }
     stages {
