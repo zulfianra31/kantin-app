@@ -7,21 +7,17 @@ CORS(app)
 
 @app.route('/api/menu', methods=['GET'])
 def get_menu():
-    # Mengambil identitas dari Environment Variable (YAML Injection)
-    nama = os.getenv('NAMA_MHS', 'Nama Belum Disetting')
-    nim = os.getenv('NIM_MHS', 'NIM Belum Disetting')
-    
+    # MENGAMBIL DATA DARI YAML (INJECTION)
+    nama_dari_env = os.getenv('NAMA_MHS', 'Nama Tidak Terdeteksi')
+    nim_dari_env = os.getenv('NIM_MHS', 'NIM Tidak Terdeteksi')
+
     menu = [
         {'id': 1, 'nama': 'Nasi Goreng', 'harga': 15000},
-        {'id': 2, 'nama': 'Mie Ayam', 'harga': 12000},
-        {'id': 3, 'nama': 'Ayam Geprek', 'harga': 18000},
-        {'id': 4, 'nama': 'Es Teh Manis', 'harga': 5000}
+        {'id': 2, 'nama': 'Mie Ayam', 'harga': 12000}
     ]
-    
-    return jsonify({
-        'biodata': {'nama': nama, 'nim': nim},
-        'menu': menu
-    })
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # Kirim data identitas beserta menu ke Frontend
+    return jsonify({
+        'identitas': {'nama': nama_dari_env, 'nim': nim_dari_env},
+        'data': menu
+    })
