@@ -5,17 +5,20 @@
     <h1>Menu Kantin</h1>
     <ul id="menu"></ul>
     <script>
-        const API_URL = 'http://48.193.24.247/api'; 
-        fetch(`${API_URL}/menu`)
-            .then(res => res.json())
-            .then(data => {
-                const list = document.getElementById('menu');
-                data.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = `${item.nama} - Rp${item.harga}`;
-                    list.appendChild(li);
-                });
+    // Ganti baris ini dengan IP External Backend yang kamu dapat tadi
+    const API_URL = 'http://48.193.24.247/api'; 
+    
+    fetch(`${API_URL}/menu`)
+        .then(res => res.json())
+        .then(data => {
+            const list = document.getElementById('menu');
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.nama} - Rp${item.harga}`;
+                list.appendChild(li);
             });
+        })
+        .catch(err => console.error("Gagal ambil data:", err));
     </script>
 </body>
 </html>
