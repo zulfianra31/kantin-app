@@ -17,7 +17,6 @@ spec:
         image: zulfian/kantin-backend:latest
         ports:
         - containerPort: 5000
-        # --- TAMBAHAN POIN 3 DISINI ---
         resources:
           limits:
             cpu: "500m"
@@ -37,6 +36,7 @@ kind: Service
 metadata:
   name: backend-service
 spec:
+  type: LoadBalancer # Tambahkan ini agar Backend punya IP Public
   selector:
     app: backend
   ports:
@@ -63,7 +63,6 @@ spec:
         image: zulfian/kantin-frontend:latest
         ports:
         - containerPort: 80
-        # --- TAMBAHAN POIN 3 DISINI ---
         resources:
           limits:
             cpu: "500m"
@@ -83,6 +82,7 @@ kind: Service
 metadata:
   name: frontend-service
 spec:
+  type: LoadBalancer # Tambahkan ini agar Frontend bisa dibuka di browser
   selector:
     app: frontend
   ports:
