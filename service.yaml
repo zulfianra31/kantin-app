@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: kantin-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: kantin
   ports:
