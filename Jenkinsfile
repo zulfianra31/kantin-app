@@ -31,6 +31,7 @@ pipeline {
                     bat "kubectl apply -f kantin-k8s.yaml"
                     bat "kubectl rollout restart deployment backend-kantin"
                     bat "kubectl rollout restart deployment frontend-kantin"
+                    bat "kubectl apply -f ingress.yaml"
                 }
             }
         }

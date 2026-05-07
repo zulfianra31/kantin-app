@@ -13,13 +13,13 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: backend-service # Sesuaikan dengan nama service BE kamu
+            name: backend-service
             port:
               number: 5000
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: frontend-service # Sesuaikan dengan nama service FE kamu
+            name: frontend-service
             port:
               number: 80
