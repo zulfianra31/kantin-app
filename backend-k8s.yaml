@@ -17,15 +17,22 @@ spec:
         image: zulfian/kantin-backend:latest
         ports:
         - containerPort: 5000
+        # --- PERUBAHAN POIN 3 & 5: IDENTITY INJECTION ---
+        env:
+        - name: NAMA_MHS
+          value: "Zulfian Rais Almanshur"
+        - name: NIM_MHS
+          value: "2400325" # Ganti dengan NIM asli kamu
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: backend-service
 spec:
-  type: LoadBalancer
+  # --- PERUBAHAN POIN 2: UBAH JADI ClusterIP ---
+  type: ClusterIP 
   ports:
-  - port: 80
+  - port: 5000       # Biarkan port 5000 agar sesuai dengan targetPort
     targetPort: 5000
   selector:
     app: kantin-backend
