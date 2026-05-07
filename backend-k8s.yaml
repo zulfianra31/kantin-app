@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kantin-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kantin-backend
+  template:
+    metadata:
+      labels:
+        app: kantin-backend
+    spec:
+      containers:
+      - name: backend-container
+        image: zulfian/kantin-backend:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: kantin-backend
