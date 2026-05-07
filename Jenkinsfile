@@ -16,7 +16,7 @@ pipeline {
                     // Ganti sh menjadi bat karena kamu pakai Windows
                     bat "docker build -t ${USER}/kantin-backend:latest ./backend"
                     bat "docker build -t ${USER}/kantin-frontend:latest ./frontend"
-                    bat "echo ${PASS} | docker login -u ${USER} --password-stdin"
+                    bat 'echo %PASS% | docker login -u %USER% --password-stdin'
                     bat "docker push ${USER}/kantin-backend:latest"
                     bat "docker push ${USER}/kantin-frontend:latest"
                 }
